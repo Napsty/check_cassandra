@@ -61,8 +61,8 @@ Check Types:
 }
 
 threshold_logic () {
-  if [ -n $warning ] && [ -z $critical ]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
-  if [ -n $critical ] && [ -z $warning ]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
+  if [[ -n $warning ]] && [[ -z $critical ]]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
+  if [[ -n $critical ]] && [[ -z $warning ]]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
 }
 ################################################################################
 # Get user-given variables
