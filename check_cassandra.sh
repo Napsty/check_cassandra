@@ -59,6 +59,11 @@ Check Types:
 "
   exit $STATE_UNKNOWN
 }
+
+threshold_logic () {
+  if [ -n $warning ] && [ -z $critical ]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
+  if [ -n $critical ] && [ -z $warning ]; then echo "UNKNOWN - Define both warning and critical thresholds"; exit $STATE_UNKNOWN; fi
+}
 ################################################################################
 # Get user-given variables
 while getopts "w:c:t:n:" Input
@@ -82,6 +87,8 @@ for cmd in nodetool bc; do
     exit ${STATE_UNKNOWN}
   fi
 done
+
+threshold_logic
 ################################################################################
 # Do checks
 case $checktype in
