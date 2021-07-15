@@ -57,6 +57,7 @@ Check Types:
   mem         Monitor (Java) heap memory usage
   cluster     Monitor nodes in cluster
 "
+  exit $STATE_UNKNOWN
 }
 ################################################################################
 # Get user-given variables
@@ -148,3 +149,6 @@ cluster) # Check Cassandra Cluster (Nodes availability)
 ;;
 
 esac
+
+# Should never reach here
+exit $STATE_UNKNOWN
